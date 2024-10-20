@@ -1,6 +1,8 @@
 import { useState } from 'react'
 import './App.css'
 
+import Form from './components/Form'
+
 function App() {
   const [products, setProducts] = useState([])
   const [termoPesquisado, setTermoPesquisado] = useState('')
@@ -24,13 +26,13 @@ function App() {
       }
 
       const data = await response.json()
-      console.log(data) 
+      console.log(data)
       if (data.results.length === 0) {
         setError('Nenhum produto encontrado com esses critérios.');
       } else {
         setProducts(data.results);
       }
-      
+
     } catch (err) {
       setError('Erro ao buscar produtos. Tente novamente.')
       console.error(err)
@@ -48,35 +50,14 @@ function App() {
     }}>
       <h1>Produtos à Venda</h1>
 
-      <form onSubmit={handleSearch}>
-        <input
-          type="text"
-          value={termoPesquisado}
-          onChange={(e) => setTermoPesquisado(e.target.value)}
-          placeholder="Termo de pesquisa"
-          required
-        />
-        <input
-          type="number"
-          value={precoMinimo}
-          onChange={(e) => setPrecoMinimo(e.target.value)}
-          placeholder="Preço Mínimo"
-        />
-        <input
-          type="number"
-          value={precoMaximo}
-          onChange={(e) => setPrecoMaximo(e.target.value)}
-          placeholder="Preço Máximo"
-        />
-        <select value={condicao} onChange={(e) => setCondicao(e.target.value)} required>
-          <option value="">Escolha a condição do Produto</option>
-          <option value="new">Novo</option>
-          <option value="used">Usado</option>
-          <option value="not_specified">Não especificado</option>
-        </select>
-        <button type="submit">Buscar</button>
-      </form>
-
+      <Form
+        handleSearch={handleSearch}
+        setTermoPesquisado={setTermoPesquisado}
+        setPrecoMinimo={setPrecoMinimo}
+        setPrecoMaximo={setPrecoMaximo}
+        setCondicao={setCondicao}
+      />
+      
       {loading && <p>Carregando...</p>}
 
       {error && <p style={{ color: 'red' }}>{error}</p>}
