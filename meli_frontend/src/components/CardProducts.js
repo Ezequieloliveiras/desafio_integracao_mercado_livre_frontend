@@ -5,8 +5,7 @@ function CardProduct({ item }) {
     const navigate = useNavigate()
 
     const handleProductClick = () => {
-        navigate(`/product/${item.id}`)
-        console.log("ID do produto:", item.id)
+        navigate(`/product/${item.id}`, { state: { product: item } })
     }
 
     return (

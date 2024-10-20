@@ -74,6 +74,7 @@ function App() {
         products.map(item => (
           <CardProduct
             item={item}
+            key={item.id}
           />
         ))
       }
