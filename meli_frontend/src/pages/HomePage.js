@@ -48,12 +48,7 @@ function App() {
         alignItems: 'center',
         flexDirection: 'column'
       }}>
-      <Typography
-        sx={{ margin: '50px 0px' }}
-        variant='h4'
-      >
-        Produtos Mercado Livre
-      </Typography>
+      <Typography sx={{ margin: '50px 0px' }}variant='h4'>Produtos Mercado Livre</Typography>
 
       <FormSubmit
         handleSearch={handleSearch}

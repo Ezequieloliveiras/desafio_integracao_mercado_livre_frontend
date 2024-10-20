@@ -11,26 +11,14 @@ const searchProducts = async (termoPesquisado, precoMinimo, precoMaximo, condica
       },
     })
 
-    return response.data.results // Retorna os resultados da API
+    return response.data.results
 
   } catch (error) {
     console.error('Erro ao buscar produtos:', error)
-    throw error // Propaga o erro para ser tratado no componente
+    throw error 
   }
 }
-
-
-const getProductById = async (id) => {
-  try {
-    const response = await axios.get(`https://api.mercadolibre.com/items/${id}`)
-    return response.data
-  } catch (error) {
-    throw error
-  }
-}
-
 
 export {
     searchProducts,
-    getProductById
 }
