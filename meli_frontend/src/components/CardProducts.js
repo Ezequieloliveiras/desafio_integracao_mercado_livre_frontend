@@ -1,16 +1,20 @@
-import {
-    Card,
-    CardContent,
-    CardMedia,
-    Typography
-} from '@mui/material'
+import { Card, CardContent, CardMedia, Typography } from '@mui/material'
+import { useNavigate } from 'react-router-dom'
 
 function CardProduct({ item }) {
+    const navigate = useNavigate()
+
+    const handleProductClick = () => {
+        navigate(`/product/${item.id}`)
+        console.log("ID do produto:", item.id)
+    }
+
     return (
         <Card
             key={item.id}
+            onClick={handleProductClick}
             sx={{
-                boxShadow:'0px 0px 5px 0px grey',
+                boxShadow: '0px 0px 5px 0px grey',
                 width: '600px',
                 margin: '20px',
                 padding: '10px',
@@ -18,6 +22,7 @@ function CardProduct({ item }) {
                 display: 'flex',
                 justifyContent: 'center',
                 alignItems: 'center',
+                cursor: 'pointer'
             }}
         >
             <CardMedia
@@ -25,7 +30,7 @@ function CardProduct({ item }) {
                 src={item.thumbnail}
                 alt={item.title}
                 height="100"
-                sx={{ objectFit: 'contain', width: "200px" }} // para manter a proporção da imagem
+                sx={{ objectFit: 'contain', width: "200px" }}
             />
             <CardContent sx={{
                 width: '100%',
@@ -35,8 +40,8 @@ function CardProduct({ item }) {
                 alignItems: 'left',
                 textAlign: 'left'
             }}>
-                <Typography sx={{ color: 'grey' }} variant="p" >{item.id}</Typography>
-                <Typography sx={{ margin: '5px 0px' }} variant="h6" >{item.title}</Typography>
+                <Typography sx={{ color: 'grey' }} variant="p">{item.id}</Typography>
+                <Typography sx={{ margin: '5px 0px' }} variant="h6">{item.title}</Typography>
                 <Typography sx={{ margin: '5px 0px' }} variant="body1">R$ {item.price}</Typography>
                 <Typography variant="body1">{item.condition}</Typography>
                 <Typography variant="body2">{item.description}</Typography>
@@ -46,4 +51,3 @@ function CardProduct({ item }) {
 }
 
 export default CardProduct
-

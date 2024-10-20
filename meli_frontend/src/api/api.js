@@ -19,6 +19,18 @@ const searchProducts = async (termoPesquisado, precoMinimo, precoMaximo, condica
   }
 }
 
+
+const getProductById = async (id) => {
+  try {
+    const response = await axios.get(`https://api.mercadolibre.com/items/${id}`)
+    return response.data
+  } catch (error) {
+    throw error
+  }
+}
+
+
 export {
-    searchProducts
+    searchProducts,
+    getProductById
 }

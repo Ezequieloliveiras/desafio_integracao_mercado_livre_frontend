@@ -1,83 +1,13 @@
-import { useState } from 'react'
-import { Typography } from '@mui/material'
-import { searchProducts } from './api/api.js'
-
-import FormSubmit from './components/Form.js'
-import CardProduct from './components/CardProducts'
-import InfoTitle from './components/InfoTitle.js'
+import { Routes, Route } from 'react-router-dom'
+import HomePage from './pages/HomePage'
+import ProductDetail from './pages/ProductDetail'
 
 function App() {
-
-  const [products, setProducts] = useState([])
-  const [termoPesquisado, setTermoPesquisado] = useState('')
-  const [precoMinimo, setPrecoMinimo] = useState('')
-  const [precoMaximo, setPrecoMaximo] = useState('')
-  const [condicao, setCondicao] = useState('')
-  const [error, setError] = useState('')
-  const [loading, setLoading] = useState(false)
-
-  const handleSearch = async (event) => {
-    event.preventDefault()
-    setError('')
-    setLoading(true)
-    setProducts([]) // Limpa a produtos antes de nova busca
-
-    try {
-      const results = await searchProducts(termoPesquisado, precoMinimo, precoMaximo, condicao);
-
-      if (results.length === 0) {
-        setError('Nenhum produto encontrado com esses critérios.');
-      } else {
-        setProducts(results);
-      }
-
-    } catch (err) {
-      setError('Erro ao buscar produtos. Tente novamente.')
-      console.error(err)
-    } finally {
-      setLoading(false)
-    }
-  }
-
   return (
-    <main className="App" style={{
-      display: 'flex',
-      justifyContent: 'center',
-      alignItems: 'center',
-      flexDirection: 'column'
-    }}>
-      <Typography
-        sx={{ margin: '50px 0px' }}
-        variant='h4'
-      >
-        Produtos Mercado Livre
-      </Typography>
-
-      <FormSubmit
-        handleSearch={handleSearch}
-        setTermoPesquisado={setTermoPesquisado}
-        setPrecoMinimo={setPrecoMinimo}
-        setPrecoMaximo={setPrecoMaximo}
-        setCondicao={setCondicao}
-        condicao={condicao}
-      />
-
-      <InfoTitle
-        loading={loading}
-        error={error}
-        products={products}
-      />
-
-      {
-        products.map(item => (
-          <CardProduct
-            item={item}
-            key={item.id}
-          />
-        ))
-      }
-
-    </main>
+    <Routes>
+      <Route path="/" element={<HomePage />} />
+      <Route path="/product/:id" element={<ProductDetail />} /> 
+    </Routes>
   )
 }
 

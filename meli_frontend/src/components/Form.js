@@ -27,7 +27,11 @@ function Form({
             maxWidth: '1200px',
             margin: '0 auto'
         }}>
-            <Grid2 container spacing={3} alignItems="center">
+            <Grid2
+                container
+                spacing={3}
+                alignItems="center"
+            >
 
                 <Grid2 xs={12} md={4}>
                     <TextField
