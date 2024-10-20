@@ -29,7 +29,7 @@ function Form({
         }}>
             <Grid2 container spacing={3} alignItems="center">
 
-                <Grid2 item xs={12} md={4}>
+                <Grid2 xs={12} md={4}>
                     <TextField
                         label="Termo de pesquisa"
                         value={termoPesquisado}
@@ -40,7 +40,7 @@ function Form({
                     />
                 </Grid2>
 
-                <Grid2 item xs={12} md={4} sx={{ minWidth: 200 }}>
+                <Grid2 xs={12} md={4} sx={{ minWidth: 200 }}>
                     <FormControl fullWidth variant="outlined">
                         <InputLabel>Condição</InputLabel>
                         <Select
@@ -57,7 +57,7 @@ function Form({
                     </FormControl>
                 </Grid2>
 
-                <Grid2 item xs={12} md={3}>
+                <Grid2 xs={12} md={3}>
                     <TextField
                         label="Preço Mínimo"
                         type="number"
@@ -68,7 +68,7 @@ function Form({
                     />
                 </Grid2>
 
-                <Grid2 item xs={12} md={3}>
+                <Grid2 xs={12} md={3}>
                     <TextField
                         label="Preço Máximo"
                         type="number"
@@ -79,12 +79,12 @@ function Form({
                     />
                 </Grid2>
 
-                <Grid2 item xs={12} md={3}>
-                    <Button 
-                    variant="contained" 
-                    color="primary" 
-                    fullWidth 
-                    type="submit" onClick={handleSearch}>
+                <Grid2 xs={12} md={3}>
+                    <Button
+                        variant="contained"
+                        color="primary"
+                        fullWidth
+                        type="submit" onClick={handleSearch}>
                         Buscar
                     </Button>
                 </Grid2>

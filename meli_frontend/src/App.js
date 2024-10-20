@@ -1,11 +1,13 @@
 import { useState } from 'react'
 import { Typography } from '@mui/material'
+import { searchProducts } from './api/api.js'
 
 import FormSubmit from './components/Form.js'
 import CardProduct from './components/CardProducts'
 import InfoTitle from './components/InfoTitle.js'
 
 function App() {
+
   const [products, setProducts] = useState([])
   const [termoPesquisado, setTermoPesquisado] = useState('')
   const [precoMinimo, setPrecoMinimo] = useState('')
@@ -21,18 +23,12 @@ function App() {
     setProducts([]) // Limpa a produtos antes de nova busca
 
     try {
-      const response = await fetch(`http://localhost:3001/api/dados?termoPesquisado=${termoPesquisado}&precoMinimo=${precoMinimo}&precoMaximo=${precoMaximo}&condicao=${condicao}`)
+      const results = await searchProducts(termoPesquisado, precoMinimo, precoMaximo, condicao);
 
-      if (!response.ok) {
-        throw new Error('Erro na busca')
-      }
-
-      const data = await response.json()
-      console.log(data)
-      if (data.results.length === 0) {
+      if (results.length === 0) {
         setError('Nenhum produto encontrado com esses critérios.');
       } else {
-        setProducts(data.results);
+        setProducts(results);
       }
 
     } catch (err) {
@@ -63,6 +59,7 @@ function App() {
         setPrecoMinimo={setPrecoMinimo}
         setPrecoMaximo={setPrecoMaximo}
         setCondicao={setCondicao}
+        condicao={condicao}
       />
 
       <InfoTitle
@@ -75,6 +72,7 @@ function App() {
         products.map(item => (
           <CardProduct
             item={item}
+            key={item.id}
           />
         ))
       }

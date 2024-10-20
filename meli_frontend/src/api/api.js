@@ -1,14 +1,24 @@
-import axios from "axios";
+import axios from 'axios'
 
-const fetchProducts = async () => {
-    try {
-        const response = await axios("http://localhost:3001/api/dados")
-        return response.data
-        
-    } catch (error) {
-        console.error("Erro ao buscar produtos:", error);
-    }
+const searchProducts = async (termoPesquisado, precoMinimo, precoMaximo, condicao) => {
+  try {
+    const response = await axios.get('http://localhost:3001/api/dados', {
+      params: {
+        termoPesquisado,
+        precoMinimo,
+        precoMaximo,
+        condicao,
+      },
+    })
 
+    return response.data.results // Retorna os resultados da API
+
+  } catch (error) {
+    console.error('Erro ao buscar produtos:', error)
+    throw error // Propaga o erro para ser tratado no componente
+  }
 }
-export default fetchProducts
 
+export {
+    searchProducts
+}
