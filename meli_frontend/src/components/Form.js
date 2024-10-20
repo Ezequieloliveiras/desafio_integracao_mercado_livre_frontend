@@ -8,7 +8,7 @@ import {
     Select,
     Box
 } from '@mui/material'
-import '../App.css'
+
 
 function Form({
     termoPesquisado,
@@ -79,13 +79,12 @@ function Form({
                     />
                 </Grid2>
 
-                <Grid2 item xs={12} md={12}>
-                    <Button
-                        variant="contained"
-                        color="primary"
-                        fullWidth
-                        type="submit"
-                        onClick={handleSearch}>
+                <Grid2 item xs={12} md={3}>
+                    <Button 
+                    variant="contained" 
+                    color="primary" 
+                    fullWidth 
+                    type="submit" onClick={handleSearch}>
                         Buscar
                     </Button>
                 </Grid2>
