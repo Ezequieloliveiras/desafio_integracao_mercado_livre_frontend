@@ -20,7 +20,7 @@ function App() {
     event.preventDefault()
     setError('')
     setLoading(true)
-    setProducts([]) // Limpa a produtos antes de nova busca
+    setProducts([])
 
     try {
       const results = await searchProducts(termoPesquisado, precoMinimo, precoMaximo, condicao)
