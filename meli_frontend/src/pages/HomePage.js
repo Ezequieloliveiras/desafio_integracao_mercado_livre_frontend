@@ -25,10 +25,13 @@ function App() {
     try {
       const results = await searchProducts(termoPesquisado, precoMinimo, precoMaximo, condicao)
       console.log(results)
-      if (results.length === 0) {
-        setError('Nenhum produto encontrado com esses critérios.')
+      if (results.error) {
+        // Exibe o erro retornado da API
+        setError(results.error);
+      } else if (results.length === 0) {
+        setError('Nenhum produto encontrado com esses critérios.');
       } else {
-        setProducts(results)
+        setProducts(results);
       }
 
     } catch (err) {
@@ -48,7 +51,7 @@ function App() {
         alignItems: 'center',
         flexDirection: 'column'
       }}>
-      <Typography sx={{ margin: '50px 0px' }}variant='h4'>Produtos Mercado Livre</Typography>
+      <Typography sx={{ margin: '50px 0px' }} variant='h4'>Produtos Mercado Livre</Typography>
 
       <FormSubmit
         handleSearch={handleSearch}
@@ -66,12 +69,16 @@ function App() {
       />
 
       {
-        products.map(item => (
-          <CardProduct
-            item={item}
-            key={item.id}
-          />
-        ))
+        Array.isArray(products) && products.length > 0 ? (
+          products.map(item => (
+            <CardProduct
+              item={item}
+              key={item.id}
+            />
+          ))
+        ) : (
+          <></>
+        )
       }
 
     </main>

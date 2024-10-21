@@ -14,11 +14,25 @@ const searchProducts = async (termoPesquisado, precoMinimo, precoMaximo, condica
     return response.data.results
 
   } catch (error) {
-    console.error('Erro ao buscar produtos:', error)
-    throw error 
+    console.error('Erro ao buscar produtos:', error.message)
+
+    let errorMessage = ''
+
+    // Verifica se a resposta do servidor está disponível
+    if (error.response) {
+      errorMessage = `Erro: ${error.response.data}`
+    } else if (error.request) {
+      // O pedido foi feito mas não houve resposta
+      errorMessage = 'Solicitação feita, mas sem resposta recebida.'
+    } else {
+      // Algo aconteceu ao configurar a solicitação que acionou um erro
+      errorMessage = `Erro ao configurar o pedido: ${error.message}`
+    }
+    
+    return {error: errorMessage}
   }
 }
 
 export {
-    searchProducts,
+  searchProducts,
 }

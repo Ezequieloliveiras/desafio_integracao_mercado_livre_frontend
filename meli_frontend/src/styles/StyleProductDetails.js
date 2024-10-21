@@ -36,7 +36,7 @@ const StyledCard = styled(Card)`
     width: 800px;
     height: 500px;
     margin: 20px auto 0;
-        padding: 10px
+    padding: 20px
 }
 `;
 
@@ -64,14 +64,14 @@ const ProductImage = styled(CardMedia)`
 const StyledCardContent = styled(CardContent)`
 && {
     flex: 1;
-    box-shadow: 0px 0px 1px rgba(0, 0, 0, 0.5);
+    border-left: 1px solid rgba(0, 0, 0, 0.2);
     padding-Left: 40px;
     align-items: 'center';
 }
 `;
 
 const StyledTypography = styled(Typography)`
-&&{
+&& {
   font-size: 1rem;
   color: rgba(0, 0, 0, 0.6);
   margin-bottom: 10px;
@@ -79,17 +79,20 @@ const StyledTypography = styled(Typography)`
 `;
 
 const StyledTypographyTitle = styled(Typography)`
+&& {
   font-size: 1.2rem; 
   margin-bottom: 50px;
+}
 `;
 
 const StyledTypographyPrice = styled(Typography)`
+&& {
   margin-top: 29px; 
   margin-bottom:10px;
   color: rgba(0, 0, 0, 0.6);
   font-size: 1.25rem; 
+}
 `;
-
 
 export {
     Container,
