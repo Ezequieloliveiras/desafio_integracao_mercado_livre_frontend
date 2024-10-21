@@ -42,7 +42,7 @@ function CardProduct({ item }) {
                 <Typography sx={{ color: 'grey' }} variant="p">{item.id}</Typography>
                 <Typography sx={{ margin: '5px 0px' }} variant="h6">{item.title}</Typography>
                 <Typography sx={{ margin: '5px 0px' }} variant="body1">R$ {item.price}</Typography>
-                <Typography variant="body1">{item.condition}</Typography>
+                <Typography variant="body1">{item.condition === 'used' ? 'Usado': '' || item.condition === 'new' ? 'Novo' : ''}</Typography>
                 <Typography variant="body2">{item.description}</Typography>
             </CardContent>
         </Card>
