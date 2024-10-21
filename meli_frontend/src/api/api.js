@@ -10,14 +10,12 @@ const searchProducts = async (termoPesquisado, precoMinimo, precoMaximo, condica
         condicao,
       },
     })
-
     return response.data.results
-
+    
   } catch (error) {
-    console.error('Erro ao buscar produtos:', error.message)
 
     let errorMessage = ''
-
+   
     // Verifica se a resposta do servidor está disponível
     if (error.response) {
       errorMessage = `Erro: ${error.response.data}`

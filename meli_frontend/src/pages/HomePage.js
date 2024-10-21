@@ -27,15 +27,12 @@ function App() {
       if (results.error) {
         // Exibe o erro retornado da API
         setError(results.error);
-      } else if (results.length === 0) {
-        setError('Nenhum produto encontrado com esses critérios.');
       } else {
         setProducts(results);
       }
 
     } catch (err) {
       setError('Erro ao buscar produtos. Tente novamente.')
-      console.error(err)
     } finally {
       setLoading(false)
     }
