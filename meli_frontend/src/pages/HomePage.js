@@ -24,7 +24,6 @@ function App() {
 
     try {
       const results = await searchProducts(termoPesquisado, precoMinimo, precoMaximo, condicao)
-      console.log(results)
       if (results.error) {
         // Exibe o erro retornado da API
         setError(results.error);

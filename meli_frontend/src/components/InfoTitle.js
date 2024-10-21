@@ -19,7 +19,11 @@ function InfoTitle({ loading, error, products }) {
                 justifyContent="center"
             >
                 {loading && <CircularProgress />}
-                {error && <Typography color="error">{error}</Typography>}
+                {error &&
+                    <Typography color="error">
+                        {error}
+                    </Typography>
+                }
             </Box>
 
             <Box
@@ -47,7 +51,7 @@ function InfoTitle({ loading, error, products }) {
                     </Typography>
                 )}
             </Box>
-            
+
         </Box>
     )
 }

@@ -39,7 +39,7 @@ function ProductDetail() {
                             Preço: R$ {product.price.toFixed(2)}
                         </StyledTypographyPrice>
                         <StyledTypography>
-                            Condição: {product.condition}
+                            Condição: {product.condition === 'used' ? 'Usado' : '' || product.condition === 'new' ? 'Novo' : ''}
                         </StyledTypography>
                         <StyledTypography>
                             {product.description}
